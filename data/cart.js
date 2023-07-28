@@ -43,3 +43,17 @@ function removeFromCart(productId) {
 function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+function updateQuantity(productId, newQuantity) {
+  let matchingItem;
+
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId) {
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.quantity = newQuantity;
+
+  saveToStorage();
+}
